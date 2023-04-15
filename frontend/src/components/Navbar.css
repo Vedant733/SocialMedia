@@ -1,0 +1,19 @@
+.inputField {
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 3px solid white;
+}
+
+input:focus {
+  outline: none;
+  border-left: 3px solid red;
+  border-right: 3px solid red;
+}
+
+.delete {
+  transition: 0.4s all;
+}
+
+.delete:hover {
+  opacity: 0.5;
+}
