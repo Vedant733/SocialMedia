@@ -23,11 +23,11 @@ function People({ personToBeViewedID, setPersonToBeViewedID }) {
     })
     return <>
         {personToBeViewedID ?
-            <div style={{ minHeight: '100vh', width: '45%', background: 'white', borderRadius: '8px', marginTop: '10px' }}>
+            <div style={{ minHeight: '100vh', width: '40%', background: 'white', borderRadius: '8px', marginTop: '10px' }}>
                 <ArrowBack style={{ padding: '24px', paddingBottom: 0 }} onClick={() => setPersonToBeViewedID(null)} />
 
                 {viewProfile?.data?.data ? <>
-                    <div style={{ boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px', padding: '20px', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <div style={{ boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px', padding: '20px', paddingTop: 0, display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                         <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '33%' }}>
                             {viewProfile?.data?.data?.profilePicture ? <img src={IMAGE_PREFIX + viewProfile?.data?.data?.profilePicture.data} style={{ width: '100px', height: '100px', borderRadius: '50%' }} alt="" /> : <AccountCircle style={{ width: '100px', height: '100px', borderRadius: '50%' }} />}
                             <span style={{ fontWeight: 600, marginTop: '8px' }}>{viewProfile.data.data.username}</span>
@@ -46,12 +46,15 @@ function People({ personToBeViewedID, setPersonToBeViewedID }) {
                     <div style={{ background: 'white', paddingBottom: '12px', paddingLeft: '10%', width: '90%' }}>
                         <span style={{ marginTop: '8px' }}>{viewProfile.data.data.bio}</span>
                     </div>
-                    {viewProfile?.data?.data && posts?.data?.data && posts.data.data.map(item => {
-                        return <PostCard profilePic={viewProfile?.data?.data?.profilePicture?.data} id={item.id} hideUsername={true} image={IMAGE_PREFIX + item.image.data} caption={item.caption} />
-                    })}
+                    <div style={{ overflowY: 'scroll', height: `${window.innerHeight - 300}px` }}>
+                        {viewProfile?.data?.data && posts?.data?.data && posts.data.data.map(item => {
+                            return <PostCard profilePic={viewProfile?.data?.data?.profilePicture?.data} id={item.id} hideUsername={true} image={IMAGE_PREFIX + item.image.data} caption={item.caption} />
+                        })}
+                    </div>
                 </> : 'loading'}
+
             </div>
-            : <div style={{ width: '45%', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '16px' }}>
+            : <div style={{ width: '40%', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '16px' }}>
                 <NewPeople setPersonToBeViewedID={setPersonToBeViewedID} />
             </div>}
     </>;

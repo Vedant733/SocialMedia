@@ -1,22 +1,16 @@
-import { Button } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router";
-
+import Login from "./Login";
+import LandingImg from '../assets/landing.svg'
 function Landing() {
 
-    const navigate = useNavigate()
-
-    return <div style={{ display: 'flex' }}>
-        <div style={{ width: '50%', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: "center" }}>
-            <h1 style={{ fontSize: '60px', color: 'red' }}>NotSoSocial</h1>
+    return <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="landing_container" style={{ maxWidth: 1500, width: 'clamp(900px,100%,1500px)', height: '100vh', display: 'flex' }}>
+            <div className='landing_img' style={{ width: '50%', height: 'auto', display: 'flex', justifyContent: 'flex-end' }}>
+                <img src={LandingImg} alt="" width="60%" style={{ aspectRatio: 1 }} />
+            </div>
+            <div style={{ width: '40%', height: 'auto' }}><Login /></div>
         </div>
-        <div style={{ width: '50%', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: "center" }}>
-            <h1 style={{ paddingLeft: '20%', }}>A social media app.</h1>
-            <div style={{ marginLeft: '20%', display: 'flex' }}>
-                <Button variant="contained" sx={{ marginTop: '12px', }} onClick={() => navigate("/login")}>Login</Button>
-                <Button variant="contained" sx={{ marginTop: '12px', marginLeft: '10%' }} onClick={() => navigate("/register")}>Register</Button>
-            </div></div>
-    </div>;
+    </div>
 }
 
 export default Landing;

@@ -25,5 +25,8 @@ export const GET_NEW_USERS = HOST + '/user/users/0/5'
 export const GET_USER_BY_USERNAME = HOST + '/user/'
 export const GET_IS_LIKED = HOST + '/likes/isLiked/'
 export const GET_NUMBER_OF_LIKES = HOST + '/likes/postLikes/'
+export const GET_USER_AUTOCOMPLETE = HOST + '/user/autocomplete/5/'
+export const GET_FOLLOWING_USERS = HOST + '/user/following'
+export const GET_FOLLOWER_USERS = HOST + '/user/followers'
 
 export const IMAGE_PREFIX = 'data:image/png;base64,'

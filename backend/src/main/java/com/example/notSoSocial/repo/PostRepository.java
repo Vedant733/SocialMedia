@@ -13,5 +13,5 @@ import java.util.List;
 public interface PostRepository extends MongoRepository<Post,String> {
     List<Post> findAllByUsernameOrderByUploadedAtDesc(String username);
     Page<Post> findAllByUsernameNotOrderByUploadedAtDesc(String username,Pageable pageable);
-    Page<Post> findAllByUsernameInOrderByUploadedAtDesc(HashSet<String> users, Pageable pageable);
+    Page<Post> findAllByUsernameInAndIdNotInOrderByUploadedAtDesc(HashSet<String> users,List<String> ids ,Pageable pageable);
 }

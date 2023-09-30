@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router'
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { secondaryColor } from '../constants/color'
 
 const passwordError = 'Passwords Do Not Match'
 const unknownError = 'Unknown Error'
@@ -54,7 +55,7 @@ function Register() {
         setOpen(true)
     }
 
-    return <div style={{ display: 'grid', placeItems: 'center', height: '100vh' }}>
+    return <div style={{ display: 'grid', placeItems: 'center', height: '100vh', background: secondaryColor }}>
         <Snackbar open={open} autoHideDuration={6000} onClose={() => { setOpen(false) }}>
             <Alert onClose={() => { setOpen(false) }} severity="error" sx={{ width: '100%' }}>
                 {errorText}
@@ -63,23 +64,119 @@ function Register() {
         <div style={{
             boxShadow: `rgba(0, 0, 0, 0.35) 0px 5px 15px`,
             width: '400px',
-            background: 'white',
+            background: secondaryColor, color: 'white',
             height: '650px',
             borderRadius: '16px',
-            border: '1px red solid', borderTopColor: 'white', borderBottomColor: 'white'
+            border: '1px #4115f1 solid', borderTopColor: secondaryColor, borderBottomColor: secondaryColor
         }}>
             <form onSubmit={handleLogin} style={{
                 margin: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
             }}>
                 <span style={{ fontSize: '24px', marginBottom: '48px', marginTop: '48px' }}>NotSoSocial</span>
-                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setUsername(e.target.value)} label='Username' sx={{ width: '80%', margin: '1.5%' }} />
-                <TextField type='email' required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setEmail(e.target.value)} label='Email' sx={{ width: '80%', margin: '1.5%' }} />
-                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setFirstname(e.target.value)} label='First Name' sx={{ width: '80%', margin: '1.5%' }} />
-                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setLastname(e.target.value)} label='Last Name' sx={{ width: '80%', margin: '1.5%' }} />
-                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setPassword(e.target.value)} label='Password' sx={{ width: '80%', margin: '1.5%' }} />
-                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setCPassword(e.target.value)} label='Confirm Password' sx={{ width: '80%', margin: '1.5%' }} />
+                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setUsername(e.target.value)} label='Username' sx={{
+                    width: '80%', margin: '1.5%', "& .MuiInputBase-root": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiFormLabel-root": {
+                        color: 'white', marginLeft: '-3px'
+                    },
+                    "& .MuiFormLabel-root.Mui-focused": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "white" },
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": { borderColor: "#4115f1" },
+                    },
+                }} />
+                <TextField type='email' required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setEmail(e.target.value)} label='Email' sx={{
+                    width: '80%', margin: '1.5%', "& .MuiInputBase-root": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiFormLabel-root": {
+                        color: 'white', marginLeft: '-3px'
+                    },
+                    "& .MuiFormLabel-root.Mui-focused": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "white" },
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": { borderColor: "#4115f1" },
+                    },
+                }} />
+                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setFirstname(e.target.value)} label='First Name' sx={{
+                    width: '80%', margin: '1.5%', "& .MuiInputBase-root": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiFormLabel-root": {
+                        color: 'white', marginLeft: '-3px'
+                    },
+                    "& .MuiFormLabel-root.Mui-focused": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "white" },
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": { borderColor: "#4115f1" },
+                    },
+                }} />
+                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setLastname(e.target.value)} label='Last Name' sx={{
+                    width: '80%', margin: '1.5%', "& .MuiInputBase-root": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiFormLabel-root": {
+                        color: 'white', marginLeft: '-3px'
+                    },
+                    "& .MuiFormLabel-root.Mui-focused": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "white" },
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": { borderColor: "#4115f1" },
+                    },
+                }} />
+                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} type='password' onChange={(e) => setPassword(e.target.value)} label='Password' sx={{
+                    width: '80%', margin: '1.5%', "& .MuiInputBase-root": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiFormLabel-root": {
+                        color: 'white', marginLeft: '-3px'
+                    },
+                    "& .MuiFormLabel-root.Mui-focused": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "white" },
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": { borderColor: "#4115f1" },
+                    },
+                }} />
+                <TextField required inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} type='password' onChange={(e) => setCPassword(e.target.value)} label='Confirm Password' sx={{
+                    width: '80%', margin: '1.5%', "& .MuiInputBase-root": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiFormLabel-root": {
+                        color: 'white', marginLeft: '-3px'
+                    },
+                    "& .MuiFormLabel-root.Mui-focused": {
+                        color: '#4115f1'
+                    },
+                    "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "white" },
+                    },
+                    "& .MuiOutlinedInput-root:hover": {
+                        "& > fieldset": { borderColor: "#4115f1" },
+                    },
+                }} />
                 <Button type='submit' variant='contained' sx={{ width: '80%', margin: '3%', padding: '12px', paddingBottom: '16px' }} >Log In</Button>
-                <span style={{ margin: '16px' }}>Already Have An Account, Log in</span>
+                <span onClick={() => navigate('/login')} style={{ margin: '16px', cursor: 'pointer' }}>Already Have An Account, Log in</span>
             </form>
         </div>
     </div>

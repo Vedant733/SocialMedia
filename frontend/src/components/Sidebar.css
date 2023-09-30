@@ -1,16 +1,17 @@
 .card {
   cursor: pointer;
   margin-left: 12px;
-  aspect-ratio: 2;
+  aspect-ratio: 4;
   position: relative;
-  width: 90%;
-  border: 1px solid red;
-  border-radius: 16px;
+  width: 85%;
+  border: 1px solid rgb(138, 43, 226);
+  border-radius: 8px;
   z-index: 5;
+  margin-top: 24px;
 }
 .card::before {
   content: "";
-  border-radius: 16px;
+  border-radius: 8px;
   height: 100%;
   width: 100%;
   left: 0px;
@@ -53,7 +54,7 @@
 }
 
 .card-title {
-  color: rgb(255, 0, 0);
+  color: rgb(138, 43, 226);
   font-weight: 600;
   font-size: 24px;
   margin: 0px;

@@ -14,20 +14,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private final UserRepository userRepository;
+    private final UserRepository userRepository;    
 
     public void saveInfo(UserModel userModel){
         userRepository.save(userModel);
     }
 
     public UserModel getUser(String username){
-        return userRepository.findByUsername(username).orElseThrow();
+        System.out.println(username);
+        Optional<UserModel> userModelOptional = userRepository.findByUsername(username);
+        if (userModelOptional.isEmpty())    return null;
+        return userModelOptional.get();
     }
 
     public void addPhoto(String username,MultipartFile multipartFile,String bio) throws IOException {
@@ -71,9 +76,14 @@ public class UserService {
         return true;
     }
 
-    public Page<UserModel> getUserSearch(String username, String startingWith, int page, int size){
+    public Page<?> getUserSearch(String startingWith, int page, int size){
         Pageable paging = PageRequest.of(page,size);
-        return userRepository.findByUsernameNotAndUsernameStartingWith(username,startingWith,paging);
+        return userRepository.findByUsernameStartingWith(startingWith,paging).map(UserModel->{
+            ArrayList<Object> arrayList = new ArrayList<>();
+            arrayList.add(UserModel.getUsername());
+            arrayList.add(UserModel.getProfilePicture());
+            return arrayList;
+        });
     }
 
     public Page<UserModel> getUsers(String username,int page,int size){

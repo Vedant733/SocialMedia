@@ -4,12 +4,6 @@
   border: 3px solid white;
 }
 
-input:focus {
-  outline: none;
-  border-left: 3px solid red;
-  border-right: 3px solid red;
-}
-
 .delete {
   transition: 0.4s all;
 }

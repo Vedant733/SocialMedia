@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, TextField } from '@mui/material'
+import { Button, Link, TextField } from '@mui/material'
 
 import { AUTHENTICATE, TOKEN } from '../constants/dbConstants'
 import axios from 'axios'
@@ -23,7 +23,7 @@ function Login() {
     if (localStorage.getItem(TOKEN)) {
       return navigate("/app")
     }
-  })
+  }, [])
 
 
   const handleLogin = async (e) => {
@@ -43,22 +43,38 @@ function Login() {
         Invalid Username or Password
       </Alert>
     </Snackbar>
-    <div style={{
-      boxShadow: `rgba(0, 0, 0, 0.35) 0px 5px 15px`,
+    <div><div style={{
       width: '400px',
-      background: 'white',
-      height: '600px',
-      borderRadius: '16px',
-      border: '1px red solid', borderTopColor: 'white', borderBottomColor: 'white'
+      height: '450px', color: 'gray',
+      borderRadius: '8px',
+      border: '1px rgb(177, 148, 205) solid'
     }}>
       <div style={{
         margin: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
       }}>
-        <span style={{ fontSize: '24px', marginBottom: '48px', marginTop: '48px' }}>NotSoSocial</span>
-        <TextField inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setUsername(e.target.value)} label='Username' sx={{ width: '80%', margin: '1.5%' }} />
-        <TextField type='password' inputProps={{ style: { padding: '12px', paddingBottom: '16px' } }} onChange={(e) => setPassword(e.target.value)} label='Password' sx={{ width: '80%', margin: '1.5%' }} />
+        <span className='special_text' style={{ fontSize: '32px', marginBottom: '48px', marginTop: '48px' }}>NotSoSocial</span>
+        <TextField
+          onChange={(e) => setUsername(e.target.value)} label='Username'
+          sx={{
+            width: '80%', margin: '1.5%', background: 'white'
+          }} />
+        <TextField type='password' onChange={(e) => setPassword(e.target.value)} label='Password'
+          sx={{
+            width: '80%', margin: '1.5%', background: 'white'
+          }} />
         <Button onClick={handleLogin} variant='contained' sx={{ width: '80%', margin: '3%', padding: '12px' }} >Log In</Button>
-        <span style={{ margin: '16px' }}>Don't Have An Account, Sign up</span>
+      </div>
+    </div>
+      <div style={{
+        borderRadius: '8px',
+        border: '1px rgb(177, 148, 205) solid', marginTop: '12px'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px' }}>
+          Don't Have An Account,
+          <Link underline='hover' sx={{ cursor: 'pointer' }} onClick={() => navigate('/register')}>
+            Sign up
+          </Link>
+        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,3 @@
-
-import Login from './pages/Login'
 import React from 'react';
 import './App.css';
 import { Navigate, Route, Routes } from 'react-router';
@@ -13,23 +11,24 @@ import Landing from './pages/Landing';
 const muiTheme = createTheme({
   palette: {
     primary: {
-      main: '#FF0000'
+      main: '#8a2be2'
     }
   },
 
 })
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 5000, refetchOnReconnect: false, refetchOnMount: false, refetchOnWindowFocus: false } },
+})
 
 function App() {
 
   return (
+
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={muiTheme}>
         <Routes>
           <Route index element={<Landing />} />
-
-          <Route exact path='/login' element={<Login />} />
 
           <Route path='/app' element={<Protected><Home /></Protected>} />
 

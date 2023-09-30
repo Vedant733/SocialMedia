@@ -7,7 +7,9 @@ import com.example.notSoSocial.repo.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,5 +40,12 @@ public class LikeService {
 
     public int numberOfLikes(String postId){
         return likeRepository.countAllByPostId(postId);
+    }
+
+    public List<String> findLikedPostIdsByUsername(String username) {
+        List<Likes> likedPosts = likeRepository.findLikedPostsByUsername(username);
+        return likedPosts.stream()
+                .map(Likes::getPostId)
+                .collect(Collectors.toList());
     }
 }

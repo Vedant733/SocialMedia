@@ -69,10 +69,9 @@ public class UserController {
         return ResponseEntity.badRequest().body("Error");
     }
 
-    @GetMapping(value="/users/{page}/{size}/{searchKeyword}")
-    public ResponseEntity<?> getSearchedUsers(@PathVariable("page")int page,@PathVariable("size")int size,@PathVariable("searchKeyword")String searchKeyword,HttpServletRequest request){
-        String username = (String) request.getAttribute("username");
-        return ResponseEntity.ok(userService.getUserSearch(username,searchKeyword,page,size));
+    @GetMapping(value="/autocomplete/{size}/{searchKeyword}")
+    public ResponseEntity<?> getSearchedUsers(@PathVariable("size")int size,@PathVariable("searchKeyword")String searchKeyword){
+        return ResponseEntity.ok(userService.getUserSearch(searchKeyword,0,size));
     }
 
     @GetMapping(value="/users/{page}/{size}")

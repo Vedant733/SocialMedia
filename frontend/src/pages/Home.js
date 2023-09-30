@@ -11,13 +11,12 @@ function Home() {
 
     const [activeTab, setActiveTab] = React.useState(0);
     const [open, setOpen] = React.useState(false);
-
     const [personToBeViewedID, setPersonToBeViewedID] = React.useState(null)
 
     return <div style={{ display: 'flex', justifyContent: 'center' }}>
         <PostModal open={open} setOpen={setOpen} />
-        <div style={{ maxWidth: 1500, width: '100%', backgroundColor: 'rgb(233 233 233)', flexDirection: 'column' }}>
-            <Navbar personToBeViewed={personToBeViewedID} setPersonToBeViewedID={setPersonToBeViewedID} />
+        <div style={{ maxWidth: 1500, width: '100%', flexDirection: 'column' }}>
+            <Navbar personToBeViewed={personToBeViewedID} setPersonToBeViewedID={setPersonToBeViewedID} setActiveTab={setActiveTab} />
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} open={open} setOpen={setOpen} />
                 {activeTab === 0 &&
@@ -29,7 +28,7 @@ function Home() {
                 {activeTab === 2 &&
                     <People personToBeViewedID={personToBeViewedID} setPersonToBeViewedID={setPersonToBeViewedID} />
                 }
-                {activeTab === 3 && <div style={{ width: '45%', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '16px' }}>
+                {activeTab === 3 && <div style={{ width: '40%', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '16px' }}>
                     <Profile />
                 </div>}
 

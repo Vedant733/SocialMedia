@@ -23,6 +23,7 @@ import java.util.Optional;
 public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final LikeService likeService;
 
     public List<Post> getAll(String username,int page,int size){
         Pageable paging = PageRequest.of(page,size);
@@ -34,7 +35,8 @@ public class PostService {
         Optional<UserModel> userModel= userRepository.findByUsername(username);
         if (userModel.isEmpty())  return null;
         Pageable paging = PageRequest.of(page,size);
-        Page<Post> pageResult = postRepository.findAllByUsernameInOrderByUploadedAtDesc(userModel.get().getFollowing(), paging);
+        List<String> list = likeService.findLikedPostIdsByUsername(username);
+        Page<Post> pageResult = postRepository.findAllByUsernameInAndIdNotInOrderByUploadedAtDesc(userModel.get().getFollowing(),list ,paging);
         return pageResult.toList();
     }
 

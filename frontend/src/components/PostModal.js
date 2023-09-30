@@ -29,7 +29,7 @@ export default function PostModal({ open, setOpen }) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={{ ...style, background: '#000000c2', width: '70%', height: '80%' }}>
+            <Box sx={{ ...style, background: '#000000c2', width: '70%', height: 'auto', paddingBottom: '24px' }}>
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'center', paddingTop: '24px', flexDirection: 'column', alignItems: 'center' }}>
                     <input ref={inputRef} type='file' accept="image/jpeg" style={{ display: 'none' }} onChange={(e) => {
                         if (e?.target?.files?.[0]) {
@@ -57,7 +57,8 @@ export default function PostModal({ open, setOpen }) {
                         axios.post(POST_POSTS_CURRENT_USER, formdata).then(() => {
                             handleClose()
                         })
-                    }}>Post That Shit</Button>
+                    }}>Post</Button>
+
                 </div>
             </Box>
         </Modal>
